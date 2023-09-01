@@ -1,5 +1,4 @@
-def nuevoTema(tema):
-    print("=================" , tema, "===============")
+from Funciones import nuevoTema
 
 
 
