@@ -19,7 +19,11 @@ c = 2
 
 if c > 5:
     print('c es mayor a 5')
+    # ESTE BLOQUE DE CÓDIGO NUNCA SE EJECUTA (PARA DEMOSTRAR QUE PYTHON ES UN LENGUAJE INTERPRETADO)
+    kjsfdhflkjsdfhkljdhsdkjlfhsdkflhklhyetrtrey34
 else:
     print('c NO es mayor a 5')
+
+
 
 
