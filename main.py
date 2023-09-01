@@ -1,4 +1,9 @@
-print("================= variables ===============")
+def nuevoTema(tema):
+    print("=================" , tema, "===============")
+
+
+
+nuevoTema('variables')
 
 print('hola mundo')
 a = 5
@@ -12,8 +17,8 @@ print("a, b:", a, b)
 opcion = True
 print('opcion:', opcion)
 
+nuevoTema('instrucciones de control (if-else)')
 
-print("================= instrucciones de control (if-else) ===============")
 
 c = 2
 
@@ -23,6 +28,15 @@ if c > 5:
     kjsfdhflkjsdfhkljdhsdkjlfhsdkflhklhyetrtrey34
 else:
     print('c NO es mayor a 5')
+
+nuevoTema('listas')
+frutas = ['piñas', 'peras', 'manzanas', 'platanos']
+print('frutas', frutas)
+
+varios = ['zapatos', 3, 78.45, True, frutas]
+print('varios: ', varios)
+
+
 
 
 
