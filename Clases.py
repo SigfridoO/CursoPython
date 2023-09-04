@@ -1,3 +1,4 @@
 class Padre:
     def __init__(self):
-        print('hola soy Padre')
+        nombre = 'Mi nombre'
+        print('hola soy Padre y mi nombre es ' + nombre)
