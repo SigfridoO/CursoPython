@@ -58,6 +58,6 @@ for fruta in frutas:
 
 # ---------------- Clases
 nuevoTema('Clases')
-juan = Padre()
+juan = Padre('Juan')
 
 
