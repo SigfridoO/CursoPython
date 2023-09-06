@@ -1,5 +1,5 @@
 from Funciones import nuevoTema, imprimirLista
-from Clases import Padre
+from Clases import Padre, Hijo
 
 
 # -----------------  variables
@@ -60,5 +60,16 @@ for fruta in frutas:
 nuevoTema('Clases')
 juan = Padre('Juan', 24)
 juan.quienSoy()
+juan.trabajar()
+
+
+pedro = Padre('Pedro', 40)
+pedro.quienSoy()
+pedro.trabajar()
+
+print ('-------------')
+rigoberto = Hijo('Rigoberto', 23)
+rigoberto.quienSoy()
+rigoberto.trabajar()
 
 
