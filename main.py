@@ -59,5 +59,6 @@ for fruta in frutas:
 # ---------------- Clases
 nuevoTema('Clases')
 juan = Padre('Juan', 24)
+juan.quienSoy()
 
 
