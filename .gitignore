@@ -1,15 +1,3 @@
-datos.json
-**/Monitor/logs/P*
-*.env
-**/eum-env/
-**/~*
-~/.vscode-root/
-.vscode/*
-webserver/media/profiles/*
-webserver/media/locatarios/*
-vista/media/locatarios/*
-errlog.txt
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
