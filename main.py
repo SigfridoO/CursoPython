@@ -1,7 +1,6 @@
 from Funciones import nuevoTema, imprimirLista
 from Clases import Padre, Hijo
 
-
 # -----------------  variables
 nuevoTema('variables')
 
@@ -17,7 +16,6 @@ print("a, b:", a, b)
 opcion = True
 print('opcion:', opcion)
 
-
 # -----------------  if-else
 nuevoTema('instrucciones de control (if-else)')
 c = 2
@@ -28,7 +26,6 @@ if c > 5:
     kjsfdhflkjsdfhkljdhsdkjlfhsdkflhklhyetrtrey34
 else:
     print('c NO es mayor a 5')
-
 
 # -----------------  listas
 nuevoTema('listas')
@@ -62,14 +59,11 @@ juan = Padre('Juan', 24)
 juan.quienSoy()
 juan.trabajar()
 
-
 pedro = Padre('Pedro', 40)
 pedro.quienSoy()
 pedro.trabajar()
 
-print ('-------------')
+print('-------------')
 rigoberto = Hijo('Rigoberto', 23)
 rigoberto.quienSoy()
 rigoberto.trabajar()
-
-
