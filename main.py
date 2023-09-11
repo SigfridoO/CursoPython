@@ -48,6 +48,14 @@ imprimirLista(alumnos)
 alumnos.remove(alumnos[2])
 imprimirLista(alumnos)
 
+# --------------------- Tuplas
+nuevoTema("tuplas")
+transportes = ('camión', 'carro', 'motocicleta')
+print ('transportes', transportes)
+print("len(transportes):", len(transportes))
+
+
+
 # -----------------  for
 nuevoTema('Instrucciones de control - for')
 for fruta in frutas:
@@ -67,3 +75,8 @@ print('-------------')
 rigoberto = Hijo('Rigoberto', 23)
 rigoberto.quienSoy()
 rigoberto.trabajar()
+
+# --------------------- Diccionarios
+nuevoTema("Diccionarios")
+persona = { 'nombre': 'juan', 'edad': 23, 'genero: ': 'Masculino'}
+print('persona:', persona)
