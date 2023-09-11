@@ -78,8 +78,18 @@ rigoberto.trabajar()
 
 # --------------------- Diccionarios
 nuevoTema("Diccionarios")
-persona = { 'nombre': 'juan', 'edad': 23, 'genero': 'Masculino', 'trabaja': True}
+persona = { 'nombre': 'juan',
+            'edad': 23,
+            'genero': 'Masculino',
+            'trabaja': True,
+            'ocupacion': 'estudiante'}
 
 print('persona:', persona)
 print("persona.get('nombre'): ", persona.get('nombre'))
 print("persona['nombre']:", persona['nombre'])
+
+print('--------------primera forma')
+print("persona.get('ocupacion'): ", persona.get('ocupacion'))
+
+print('--------------segunda forma')
+print("persona['ocupacion']:", persona['ocupacion'])
