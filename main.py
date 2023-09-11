@@ -93,3 +93,9 @@ print("persona.get('ocupacion'): ", persona.get('ocupacion'))
 
 print('--------------segunda forma')
 print("persona['ocupacion']:", persona['ocupacion'])
+
+print('modificando el diccionario')
+print(persona.keys())
+print(persona.values())
+persona.update({'nombre':'Carlota'})
+print (persona)
