@@ -4,7 +4,10 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super().__init__()
+        #super().__init__()
+        QMainWindow.__init__(self)
+
+        self.resize(300, 400)
 
 
 if __name__ == '__main__':
