@@ -17,6 +17,20 @@ class Ventana(QMainWindow):
         # El boton se agrega a la ventana principal
         self.setCentralWidget(boton)
 
+        # Funciones del botón
+        boton.clicked.connect(self.botonClicado())
+        boton.pressed.connect(self.botonPresionado())
+        boton.released.connect(self.botonLiberado())
+
+    def botonClicado(self):
+        print('Boton clicado')
+
+    def botonPresionado(self):
+        print('Boton presionado')
+
+    def botonLiberado(self):
+        print('boton liberado')
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = Ventana()
