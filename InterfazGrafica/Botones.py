@@ -18,9 +18,9 @@ class Ventana(QMainWindow):
         self.setCentralWidget(boton)
 
         # Funciones del botón
-        boton.clicked.connect(self.botonClicado())
-        boton.pressed.connect(self.botonPresionado())
-        boton.released.connect(self.botonLiberado())
+        boton.clicked.connect(self.botonClicado)
+        boton.pressed.connect(self.botonPresionado)
+        boton.released.connect(self.botonLiberado)
 
     def botonClicado(self):
         print('Boton clicado')
