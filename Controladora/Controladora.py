@@ -37,20 +37,25 @@ class Controladora:
             GPIO.setmode(GPIO.BCM)
             GPIO.setwarnings(False)
 
-            self.DI_00 = 18
+            self.DO_00 = 17
+            self.DO_01 = 27
 
-            self.DI_01 = 27
-            self.DI_02 = 22
-            self.DI_03 = 10
-
-            self.DO_03 = 9
+            self.DI_00 = 22
 
             GPIO.setup(self.DI_00, GPIO.IN)
-            GPIO.setup(self.DI_01, GPIO.IN)
-            GPIO.setup(self.DI_02, GPIO.IN)
-            GPIO.setup(self.DI_03, GPIO.IN)
 
-            GPIO.setup(self.DO_03, GPIO.OUT)
+            GPIO.setup(self.DO_00, GPIO.OUT)
+            GPIO.setup(self.DO_01, GPIO.OUT)
+
+
+            #GPIO.output(self.DO_00, True)
+            #self.boton01 = GPIO.input(self.DI_00)
+            #print(self.boton01)
+
+
+            while True:
+                GPIO.output(self.DO_00, GPIO.input(self.DI_00))
+
 
 
 
