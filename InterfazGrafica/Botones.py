@@ -1,9 +1,10 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 
+
 class Ventana(QMainWindow):
     def __init__(self):
-        #super().__init__()
+        # super().__init__()
         QMainWindow.__init__(self)
         # Propiedades de la ventana
         self.resize(500, 200)
@@ -30,6 +31,7 @@ class Ventana(QMainWindow):
 
     def botonLiberado(self):
         print('boton liberado')
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
