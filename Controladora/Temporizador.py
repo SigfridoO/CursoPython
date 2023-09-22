@@ -41,17 +41,23 @@ class Temporizador():
 def main():
 
 
-    TON_02 = Temporizador("TON_02", 6)
+    TON_00 = Temporizador("TON_00", 10, "temporizador para activar una lampara")
 
 
     while True:
-        TON_02.entrada = not TON_02.salida
-        TON_02.actualizar()
+        # TON_00.entrada = not TON_00.salida
+        # TON_00.actualizar()
+        #
+        # if TON_00.salida:
+        #     TON_00.reset = True
+        #
+        # print(TON_00)
 
-        if TON_02.salida:
-            TON_02.reset = True
 
-        print(TON_02)
+        TON_00.entrada = True
+        TON_00.actualizar()
+
+        print(TON_00)
 
 if __name__ == "__main__":
     main()
