@@ -37,3 +37,21 @@ class Temporizador():
     def __str__(self):
         return "%s->%s    %f %s %f %s" % (
         self.nombre, self.descripcion, self.tiempo, self.entrada, self.tiempoActual, self.salida)
+
+def main():
+
+
+    TON_02 = Temporizador("TON_02", 6)
+
+
+    while True:
+        TON_02.entrada = not TON_02.salida
+        TON_02.actualizar()
+
+        if TON_02.salida:
+            TON_02.reset = True
+
+        print(TON_02)
+
+if __name__ == "__main__":
+    main()
