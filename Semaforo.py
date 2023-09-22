@@ -1,6 +1,5 @@
-
-
 from Controladora.Temporizador import Temporizador
+
 
 class Semaforo:
 
@@ -15,8 +14,7 @@ class Semaforo:
         self.TON_1 = Temporizador("TON_1", 6)
         self.TON_2 = Temporizador("TON_2", 2)
 
-
-    def  iniciarSemaforo(self):
+    def iniciarSemaforo(self):
         while True:
             self.TON_0.entrada = not self.TON_2.salida
             self.TON_0.actualizar()
@@ -55,17 +53,19 @@ class Semaforo:
                 self.luzVerde = False
                 self.luzAmarilla = True
 
-
             print(self)
+
     def __str__(self):
         return "Rojo: " + str(self.luzRoja) + \
             ", Amarillo: " + str(self.luzAmarilla) + \
             ", Verde: " + str(self.luzVerde)
 
+
 def main():
     miSemaforo = Semaforo()
     print(miSemaforo)
     miSemaforo.iniciarSemaforo()
-    
+
+
 if __name__ == "__main__":
     main()
