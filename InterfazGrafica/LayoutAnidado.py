@@ -12,20 +12,31 @@ class Ventana(QMainWindow):
         super().__init__()
         self.resize(300, 200)
 
-        layout = QHBoxLayout()
+        layoutVertical1 = QVBoxLayout()
 
         miCaja1 = Caja("green")
         miCaja2 = Caja("blue")
-        miCaja3 = Caja("red")
 
-        layout.addWidget(miCaja1)
-        layout.addWidget(miCaja2)
-        layout.addWidget(miCaja3)
+        layoutVertical1.addWidget(miCaja1)
+        layoutVertical1.addWidget(miCaja2)
+
+
+
+        layoutAux = QHBoxLayout()
+        miCaja3 = Caja("yellow")
+        layoutAux.addWidget(miCaja3)
+
+
+        layoutHorizontal1 = QHBoxLayout()
+        layoutHorizontal1.addLayout(layoutVertical1)
+        layoutHorizontal1.addLayout(layoutAux)
+
+
         # layout.setContentsMargins(0,0,0,0)
         # layout.setSpacing(0)
 
         widget = QWidget()
-        widget.setLayout(layout)
+        widget.setLayout(layoutHorizontal1)
 
         self.setCentralWidget(widget)
 
