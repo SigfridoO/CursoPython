@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout
+from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget
 import sys
 
 class Caja(QLabel):
@@ -21,7 +21,10 @@ class Ventana(QMainWindow):
         layout.addWidget(miCaja2)
         layout.addWidget(miCaja3)
 
-        self.setCentralWidget()
+        widget = QWidget()
+        widget.setLayout(layout)
+
+        self.setCentralWidget(widget)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
