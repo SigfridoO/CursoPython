@@ -31,12 +31,19 @@ class Ventana(QMainWindow):
         layoutHorizontal1.addLayout(layoutVertical1)
         layoutHorizontal1.addLayout(layoutAux)
 
+        layoutHorizontal2 = QHBoxLayout()
+        layoutHorizontal2.addWidget(Caja("orange"))
+        layoutHorizontal2.addWidget(Caja("pink"))
+
+        layoutVertical2 = QVBoxLayout()
+        layoutVertical2.addLayout(layoutHorizontal1)
+        layoutVertical2.addLayout(layoutHorizontal2)
 
         # layout.setContentsMargins(0,0,0,0)
         # layout.setSpacing(0)
 
         widget = QWidget()
-        widget.setLayout(layoutHorizontal1)
+        widget.setLayout(layoutVertical2)
 
         self.setCentralWidget(widget)
 
