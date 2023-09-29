@@ -1,5 +1,5 @@
 from Controladora.Temporizador import Temporizador
-
+import threading
 
 class Semaforo:
 
@@ -13,6 +13,11 @@ class Semaforo:
         self.TON_0 = Temporizador("TON_0", 4)
         self.TON_1 = Temporizador("TON_1", 6)
         self.TON_2 = Temporizador("TON_2", 2)
+
+
+    def run(self):
+        tarea1 = threading.Thread(target=self.iniciarSemaforo)
+        tarea1.start()
 
     def iniciarSemaforo(self):
         while True:
@@ -63,8 +68,9 @@ class Semaforo:
 
 def main():
     miSemaforo = Semaforo()
-    print(miSemaforo)
-    miSemaforo.iniciarSemaforo()
+    # print(miSemaforo)
+    # miSemaforo.iniciarSemaforo()
+    miSemaforo.run()
 
 
 
