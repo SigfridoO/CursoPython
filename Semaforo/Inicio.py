@@ -6,14 +6,17 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.sep)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
+
 from Semaforo.InterfazPantalla import InterfazPantalla
 from Semaforo.Programa import Programa
 
-from blessed import Terminal
+#from blessed import Terminal
 
 ruta = os.path.dirname(os.path.abspath(__file__)) + os.sep
 rutaUsuario = os.path.expanduser('~') + os.sep
-term = Terminal()
+#term = Terminal()
 
 sys.path.append(ruta)
 sys.path.append(os.path.join(ruta, ".."))
