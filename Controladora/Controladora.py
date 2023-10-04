@@ -33,6 +33,7 @@ class Controladora:
                 GPIO.output(self.DO_00, GPIO.input(self.DI_00))
 
 
+
 def main():
     controladora = Controladora()
 
