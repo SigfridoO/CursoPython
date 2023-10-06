@@ -6,6 +6,8 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
+
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.sep)
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
 
@@ -20,16 +22,17 @@ sys.path.append(os.path.join(ruta, ".."))
 
 from Semaforo import Semaforo
 from InterfazPantalla import InterfazPantalla
-
+from ControladoraRasp import Controladora
 class Inicio(InterfazPantalla):
     def __init__(self):
         InterfazPantalla.__init__(self)
 
         semaforo = Semaforo()
         semaforo.run()
+        semaforo.establecerWorker(self.obtenerWorker())
 
-        semaforo.establecerWorker(self)
-
+        controladora = Controladora()
+        semaforo.establecerControladora(controladora)
 
         # self.establecerInterfaz(self)
 
