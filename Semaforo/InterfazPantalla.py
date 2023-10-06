@@ -1,3 +1,6 @@
+__author__ = "Sigfrido Soria"
+__date__ = "14-mar-2023 21:10:00"
+
 import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLabel

@@ -1,3 +1,6 @@
+__author__ = "Sigfrido Soria"
+__date__ = "14-mar-2023 21:10:00"
+
 import platform
 import threading
 
@@ -17,6 +20,7 @@ class Controladora:
     def __init__(self):
         print('Iniciando la controladora')
         self.X_01 = False
+        self.estado = False
 
         if plataforma.node == "raspberrypi":
             GPIO.setmode(GPIO.BCM)
