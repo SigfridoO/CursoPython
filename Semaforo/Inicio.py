@@ -29,10 +29,10 @@ class Inicio(InterfazPantalla):
 
         semaforo = Semaforo()
         semaforo.run()
-        semaforo.establecerWorker(self.obtenerWorker())
+        semaforo.establecer_worker(self.obtener_worker())
 
         controladora = Controladora()
-        semaforo.establecerControladora(controladora)
+        semaforo.establecer_controladora(controladora)
 
         # self.establecerInterfaz(self)
 

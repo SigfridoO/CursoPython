@@ -27,10 +27,10 @@ class Semaforo:
         self.controladora: Controladora = None
 
     def run(self):
-        tarea1 = threading.Thread(target=self.iniciarSemaforo)
+        tarea1 = threading.Thread(target=self.iniciar_semaforo)
         tarea1.start()
 
-    def iniciarSemaforo(self):
+    def iniciar_semaforo(self):
         while True:
             self.TON_0.entrada = not self.TON_2.salida
             self.TON_0.actualizar()
@@ -78,15 +78,16 @@ class Semaforo:
                 self.entrada_00 = self.controladora.X_01
 
             if self.worker:
-                self.worker.activarLuzRoja(self.luzRoja)
-                self.worker.activarLuzAmarilla(self.luzAmarilla)
-                self.worker.activarLuzVerde(self.luzVerde)
-                self.worker.activarCajaAzul(self.entrada_00)
+                self.worker.senal_luz_roja(self.luzRoja)
+                self.worker.senal_luz_amarilla(self.luzAmarilla)
+                self.worker.senal_luz_verde(self.luzVerde)
+                self.worker.actualizar_variable_digital(self.entrada_00)
+                self.worker.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
 
-    def establecerWorker(self, worker):
+    def establecer_worker(self, worker):
         self.worker = worker
 
-    def establecerControladora(self, controladora):
+    def establecer_controladora(self, controladora):
         self.controladora = controladora
 
     def __str__(self):
