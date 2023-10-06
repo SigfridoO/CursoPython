@@ -1,67 +1,88 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout
 
-# from PyQt5.QtCore import (QThread, QObject, QRunnable, QThreadPool
-#                           pyqtSignal as Signal), pyqtSlot as Slot
+from Caja import Caja
 
-# class WorkerSignals(QObject):
-#     llamadaEntrante = Signal(bool)
-#
-# class Worker(QRunnable):
-#
-#     def __init__(self):
-#         super().__init__()
-#         self.signals = WorkerSignals()
-#
-#         self.banderaMostrarLlamadaEntrante: bool = False
-#
-#         # Para el control del programa
-#         self.TON_00: Temporizador = Temporizador("TON_00", 1, "Control del programa")
-#         self.TON_01: Temporizador = Temporizador("TON_01", 0.2)
-#
-#
-#         self.M: list = []
-#         for i in range(80):
-#             self.M.append(0)
-#
-#         self.RC: list = []
-#         for i in range(80):
-#             self.RC.append(0)
-#
-#
-#     @Slot()
-#     def run(self):
-#         self.banderaControlDelPrograma = True
-#         contador = 0
-#
-#         while self.banderaControlDelPrograma:
-#             self.TON_00.entrada = not self.TON_00.salida
-#             self.TON_00.actualizar()
-#
-#             if self.TON_00.salida:
-#                 # print('Funcionando' , contador)
-#                 contador += 1
-#
-#             self.TON_01.entrada = not self.TON_01.salida
-#             self.TON_01.actualizar()
-#
-#             if self.TON_01.salida:
-#
-#                 try:
-#                     self.signals.llamadaEntrante.emit(parpadeo)
-#                 except Exception as error:
-#                     print(error)
-#
-#     def mostrarLlamadaEntrante(self, opcion: bool = False) -> None:
-#         self.banderaMostrarLlamadaEntrante = opcion
-#
+from PyQt5.QtCore import QThread, QObject, QRunnable, QThreadPool, \
+    pyqtSignal as Signal, pyqtSlot as Slot
+
+
+class WorkerSignals(QObject):
+    luzRoja = Signal(bool)
+    luzAmarilla = Signal(bool)
+    luzVerde = Signal(bool)
+
+
+class Worker(QRunnable):
+
+    def __init__(self):
+        super().__init__()
+        self.signals = WorkerSignals()
+
+    def activarLuzRoja(self, estado: bool = False):
+        try:
+            self.signals.luzRoja.emit(estado)
+        except Exception as error:
+            print(error)
+
+    def activarLuzAmarilla(self, estado: bool = False):
+        try:
+            self.signals.luzAmarilla.emit(estado)
+        except Exception as error:
+            print(error)
+
+    def activarLuzVerde(self, estado: bool = False):
+        try:
+            self.signals.luzVerde.emit(estado)
+        except Exception as error:
+            print(error)
 
 
 class InterfazPantalla(QMainWindow):
     def __init__(self) -> None:
         QMainWindow.__init__(self)
-        self.resize(240, 120)
+        self.resize(420, 420)
+
+        layout = QGridLayout()
+        miCaja = Caja('cyan')
+        # miCaja.setFixedWidth(50)
+        # miCaja.setFixedSize(50,80)
+
+        self.cajaLuzRoja = Caja('red')
+        self.cajaLuzAmarilla = Caja('yellow')
+        self.cajaLuzVerde = Caja('green')
+
+        layout.addWidget(miCaja, 0, 0, 3, 2)
+        layout.addWidget(self.cajaLuzRoja, 0, 2)
+        layout.addWidget(self.cajaLuzAmarilla, 1, 2)
+        layout.addWidget(self.cajaLuzVerde, 2, 2)
+
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+
+        self.threadpool = QThreadPool()
+
+        self.worker = Worker()
+        self.worker.signals.luzRoja.connect(self.activarLuzRoja)
+        self.worker.signals.luzAmarilla.connect(self.activarLuzAmarilla)
+        self.worker.signals.luzVerde.connect(self.activarLuzVerde)
+
+        # Iniciamos el trabajador en la pool de hilos
+        self.threadpool.start(self.worker)
+
+    def activarLuzRoja(self, opcion: bool = False) -> None:
+        self.cajaLuzRoja.setHidden(not opcion)
+
+    def activarLuzAmarilla(self, opcion: bool = False) -> None:
+        self.cajaLuzAmarilla.setHidden(not opcion)
+
+    def activarLuzVerde(self, opcion: bool = False) -> None:
+        self.cajaLuzVerde.setHidden(not opcion)
+
+    def obtenerWorker(self):
+        return self.worker
 
 
 if __name__ == '__main__':

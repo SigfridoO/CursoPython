@@ -5,6 +5,7 @@ import os
 import sys
 import threading
 
+from Semaforo.InterfazPantalla import InterfazPantalla
 
 ruta = os.path.dirname(os.path.abspath(__file__)) + os.sep
 rutaUsuario = os.path.expanduser('~') + os.sep
@@ -24,6 +25,8 @@ class Programa(threading.Thread):
         self.funcionando = None
         self.TON_01 = Temporizador("TON_01", 1)
 
+        self.interfazPantalla:InterfazPantalla = None
+
 
     def run(self):
         self.funcionando = True
@@ -40,6 +43,11 @@ class Programa(threading.Thread):
 
             if contador >= 65535:
                 contador = 0
+
+                self.interfazPantalla.activarLuzRoja()
+
+    def establecerInterfaz(self, interfaz: InterfazPantalla):
+        self.interfazPantalla =  interfaz
 
 def main():
     programa = Programa()

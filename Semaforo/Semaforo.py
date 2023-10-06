@@ -1,5 +1,13 @@
 from Controladora.Temporizador import Temporizador
 import threading
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.sep)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
+
+from ControladoraRasp import Controladora
+
 
 class Semaforo:
 
@@ -14,6 +22,8 @@ class Semaforo:
         self.TON_1 = Temporizador("TON_1", 6)
         self.TON_2 = Temporizador("TON_2", 2)
 
+        self.worker = None
+        self.controladora:Controladora = None
 
     def run(self):
         tarea1 = threading.Thread(target=self.iniciarSemaforo)
@@ -60,6 +70,22 @@ class Semaforo:
 
             print(self)
 
+            if self.worker:
+                self.worker.activarLuzRoja(self.luzRoja)
+                self.worker.activarLuzAmarilla(self.luzAmarilla)
+                self.worker.activarLuzVerde(self.luzVerde)
+
+            if self.controladora:
+                self.controladora.activarPin(0, self.luzRoja)
+                self.controladora.activarPin(1, self.luzAmarilla)
+                self.controladora.activarPin(2, self.luzVerde)
+
+    def establecerWorker(self, worker):
+        self.worker = worker
+
+    def establecerControladora(self, controladora):
+        self.controladora = controladora
+
     def __str__(self):
         return "Rojo: " + str(self.luzRoja) + \
             ", Amarillo: " + str(self.luzAmarilla) + \
@@ -71,7 +97,6 @@ def main():
     # print(miSemaforo)
     # miSemaforo.iniciarSemaforo()
     miSemaforo.run()
-
 
 
 if __name__ == "__main__":

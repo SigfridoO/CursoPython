@@ -6,27 +6,35 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
+
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.sep)
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
 
-from Semaforo.InterfazPantalla import InterfazPantalla
-from Semaforo.Programa import Programa
-
-#from blessed import Terminal
-
 ruta = os.path.dirname(os.path.abspath(__file__)) + os.sep
 rutaUsuario = os.path.expanduser('~') + os.sep
+
+#from blessed import Terminal
 #term = Terminal()
 
 sys.path.append(ruta)
 sys.path.append(os.path.join(ruta, ".."))
 
-
-class Inicio(InterfazPantalla, Programa):
+from Semaforo import Semaforo
+from InterfazPantalla import InterfazPantalla
+from ControladoraRasp import Controladora
+class Inicio(InterfazPantalla):
     def __init__(self):
         InterfazPantalla.__init__(self)
-        Programa.__init__(self)
-        self.start()
+
+        semaforo = Semaforo()
+        semaforo.run()
+        semaforo.establecerWorker(self.obtenerWorker())
+
+        controladora = Controladora()
+        semaforo.establecerControladora(controladora)
+
+        # self.establecerInterfaz(self)
 
 
 if __name__ == "__main__":
