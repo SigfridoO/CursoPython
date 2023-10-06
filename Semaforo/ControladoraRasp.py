@@ -7,7 +7,7 @@ if sistema == "Windows":
     print('Estamos en Windows')
 elif sistema == 'Linux':
     print('Estamos en Linux')
-    if plataforma.node == "raspberrypy":
+    if plataforma.node == "raspberrypi":
         print('Es una raspberry')
         import RPi.GPIO as GPIO
 
@@ -16,7 +16,7 @@ class Controladora:
     def __init__(self):
         print('Iniciando la controladora')
 
-        if plataforma.node == "raspberrypy":
+        if plataforma.node == "raspberrypi":
             GPIO.setmode(GPIO.BCM)
             GPIO.setwarnings(False)
 
@@ -29,6 +29,8 @@ class Controladora:
 
             GPIO.setup(self.DO_00, GPIO.OUT)
             GPIO.setup(self.DO_01, GPIO.OUT)
+            GPIO.setup(self.DO_02, GPIO.OUT)
+            GPIO.setup(self.DO_03, GPIO.OUT)
 
             GPIO.setup(self.DI_00, GPIO.IN)
 
@@ -36,7 +38,7 @@ class Controladora:
             #     GPIO.output(self.DO_00, GPIO.input(self.DI_00))
 
     def activarPin(self, direccion, valor):
-        if plataforma.node == "raspberrypy":
+        if plataforma.node == "raspberrypi":
 
             if direccion == 0:
                 GPIO.output(self.DO_00, valor)

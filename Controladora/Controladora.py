@@ -6,7 +6,8 @@ if sistema == "Windows":
     print('Estamos en Windows')
 elif sistema=='Linux':
     print('Estamos en Linux')
-    if plataforma.node == "raspberrypy":
+    print (plataforma.node)
+    if plataforma.node == "raspberrypi":
         print('Es una raspberry')
         import RPi.GPIO as GPIO
 
@@ -14,7 +15,7 @@ class Controladora:
     def __init__(self):
         print('Iniciando la controladora')
 
-        if plataforma.node == "raspberrypy":
+        if plataforma.node == "raspberrypi":
             GPIO.setmode(GPIO.BCM)
             GPIO.setwarnings(False)
 
