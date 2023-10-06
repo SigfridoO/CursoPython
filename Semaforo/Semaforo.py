@@ -13,6 +13,7 @@ class Semaforo:
 
     def __init__(self):
 
+        self.entrada_00 = None
         self.luzRoja = False
         self.luzVerde = False
         self.luzAmarilla = False
@@ -23,7 +24,7 @@ class Semaforo:
         self.TON_2 = Temporizador("TON_2", 2)
 
         self.worker = None
-        self.controladora:Controladora = None
+        self.controladora: Controladora = None
 
     def run(self):
         tarea1 = threading.Thread(target=self.iniciarSemaforo)
@@ -70,15 +71,17 @@ class Semaforo:
 
             print(self)
 
-            if self.worker:
-                self.worker.activarLuzRoja(self.luzRoja)
-                self.worker.activarLuzAmarilla(self.luzAmarilla)
-                self.worker.activarLuzVerde(self.luzVerde)
-
             if self.controladora:
                 self.controladora.activarPin(0, self.luzRoja)
                 self.controladora.activarPin(1, self.luzAmarilla)
                 self.controladora.activarPin(2, self.luzVerde)
+                self.entrada_00 = self.controladora.X_01
+
+            if self.worker:
+                self.worker.activarLuzRoja(self.luzRoja)
+                self.worker.activarLuzAmarilla(self.luzAmarilla)
+                self.worker.activarLuzVerde(self.luzVerde)
+                self.worker.activarCajaAzul(self.entrada_00)
 
     def establecerWorker(self, worker):
         self.worker = worker

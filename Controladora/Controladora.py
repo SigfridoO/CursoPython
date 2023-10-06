@@ -13,6 +13,7 @@ elif sistema=='Linux':
 
 class Controladora:
     def __init__(self):
+
         print('Iniciando la controladora')
 
         if plataforma.node == "raspberrypi":

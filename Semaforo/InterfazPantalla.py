@@ -13,6 +13,8 @@ class WorkerSignals(QObject):
     luzAmarilla = Signal(bool)
     luzVerde = Signal(bool)
 
+    entrada = Signal(bool)
+
 
 class Worker(QRunnable):
 
@@ -38,6 +40,11 @@ class Worker(QRunnable):
         except Exception as error:
             print(error)
 
+    def leerEntrada(self, estado: bool = False):
+        try:
+            self.signals.entrada.emit(estado)
+        except Exception as error:
+            print(error)
 
 class InterfazPantalla(QMainWindow):
     def __init__(self) -> None:
@@ -45,15 +52,15 @@ class InterfazPantalla(QMainWindow):
         self.resize(420, 420)
 
         layout = QGridLayout()
-        miCaja = Caja('cyan')
-        # miCaja.setFixedWidth(50)
-        # miCaja.setFixedSize(50,80)
+        self.cajaAzul = Caja('cyan')
+        # self.cajaAzul.setFixedWidth(50)
+        # self.cajaAzul.setFixedSize(50,80)
 
         self.cajaLuzRoja = Caja('red')
         self.cajaLuzAmarilla = Caja('yellow')
         self.cajaLuzVerde = Caja('green')
 
-        layout.addWidget(miCaja, 0, 0, 3, 2)
+        layout.addWidget(self.cajaAzul, 0, 0, 3, 2)
         layout.addWidget(self.cajaLuzRoja, 0, 2)
         layout.addWidget(self.cajaLuzAmarilla, 1, 2)
         layout.addWidget(self.cajaLuzVerde, 2, 2)
@@ -68,6 +75,7 @@ class InterfazPantalla(QMainWindow):
         self.worker.signals.luzRoja.connect(self.activarLuzRoja)
         self.worker.signals.luzAmarilla.connect(self.activarLuzAmarilla)
         self.worker.signals.luzVerde.connect(self.activarLuzVerde)
+        self.worker.signals.entrada.connect(self.leerEntrada)
 
         # Iniciamos el trabajador en la pool de hilos
         self.threadpool.start(self.worker)
@@ -80,6 +88,9 @@ class InterfazPantalla(QMainWindow):
 
     def activarLuzVerde(self, opcion: bool = False) -> None:
         self.cajaLuzVerde.setHidden(not opcion)
+
+    def activarCajaAzul(self, opcion: bool = False) -> None:
+        self.cajaAzul.setHidden(not opcion)
 
     def obtenerWorker(self):
         return self.worker
