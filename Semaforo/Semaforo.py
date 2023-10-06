@@ -28,6 +28,8 @@ class Semaforo:
 
         self.worker = None
 
+        self.interfaz = None
+
 
     def run(self):
         tarea1 = threading.Thread(target=self.iniciar_semaforo)
@@ -80,6 +82,14 @@ class Semaforo:
                 self.worker.senal_luz_verde(self.luzVerde)
                 self.worker.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
 
+            # if self.interfaz:
+            #     self.interfaz.actualizar_luz_roja(self.luzRoja)
+            #     self.interfaz.actualizar_luz_amarilla(self.luzAmarilla)
+            #     self.interfaz.actualizar_luz_verde(self.luzVerde)
+            #     self.interfaz.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
+
+    def establecer_interfaz(self, interfaz):
+        self.interfaz = interfaz
     def establecer_worker(self, worker):
         self.worker = worker
 

@@ -14,9 +14,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
 ruta = os.path.dirname(os.path.abspath(__file__)) + os.sep
 rutaUsuario = os.path.expanduser('~') + os.sep
 
-#from blessed import Terminal
-#term = Terminal()
-
 sys.path.append(ruta)
 sys.path.append(os.path.join(ruta, ".."))
 
@@ -31,6 +28,7 @@ class Inicio(InterfazPantalla):
         semaforo.run()
         semaforo.establecer_worker(self.obtener_worker())
 
+        # semaforo.establecer_interfaz(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
