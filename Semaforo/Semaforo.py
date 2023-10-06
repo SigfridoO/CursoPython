@@ -27,7 +27,7 @@ class Semaforo:
         self.TON_2 = Temporizador("TON_2", 2)
 
         self.worker = None
-        self.controladora: Controladora = None
+
 
     def run(self):
         tarea1 = threading.Thread(target=self.iniciar_semaforo)
@@ -74,17 +74,10 @@ class Semaforo:
 
             print(self)
 
-            if self.controladora:
-                self.controladora.activarPin(0, self.luzRoja)
-                self.controladora.activarPin(1, self.luzAmarilla)
-                self.controladora.activarPin(2, self.luzVerde)
-                self.entrada_00 = self.controladora.X_01
-
             if self.worker:
                 self.worker.senal_luz_roja(self.luzRoja)
                 self.worker.senal_luz_amarilla(self.luzAmarilla)
                 self.worker.senal_luz_verde(self.luzVerde)
-                self.worker.actualizar_variable_digital(self.entrada_00)
                 self.worker.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
 
     def establecer_worker(self, worker):

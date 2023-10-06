@@ -16,9 +16,7 @@ class WorkerSignals(QObject):
     luzAmarilla = Signal(bool)
     luzVerde = Signal(bool)
 
-    variableDigital = Signal(bool)
     variableAnalogica = Signal(str)
-
 
 class Worker(QRunnable):
 
@@ -44,11 +42,6 @@ class Worker(QRunnable):
         except Exception as error:
             print(error)
 
-    def actualizar_variable_digital(self, estado: bool = False):
-        try:
-            self.signals.variableDigital.emit(estado)
-        except Exception as error:
-            print(error)
 
     def actualizar_variable_analogica(self, valor: str = ''):
         try:
@@ -91,7 +84,6 @@ class InterfazPantalla(QMainWindow):
         self.worker.signals.luzRoja.connect(self.actualizar_luz_roja)
         self.worker.signals.luzAmarilla.connect(self.actualizar_luz_amarilla)
         self.worker.signals.luzVerde.connect(self.actualizar_luz_verde)
-        self.worker.signals.variableDigital.connect(self.actualizar_variable_digital)
         self.worker.signals.variableAnalogica.connect(self.actualizar_variable_analogica)
 
         # Iniciamos el trabajador en la pool de hilos
