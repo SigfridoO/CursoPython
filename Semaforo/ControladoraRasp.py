@@ -22,8 +22,8 @@ class Controladora:
 
             self.DO_00 = 4
             self.DO_01 = 17
-            self.DO_01 = 27
-            self.DO_01 = 22
+            self.DO_02 = 27
+            self.DO_03 = 22
 
             self.DI_00 = 23
 
