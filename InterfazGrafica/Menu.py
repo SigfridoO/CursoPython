@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QStatusBar
 from PySide6.QtGui  import QIcon, QAction
 
 import sys
@@ -13,6 +13,7 @@ class Ventana(QMainWindow):
         icono = QIcon(absPath('arbol.ico'))
         self.setWindowIcon(icono)
         self.setWindowTitle("MI PROGRAMA")
+        self.setStatusBar(QStatusBar(self))
 
         self.construir_menu()
 
@@ -23,15 +24,24 @@ class Ventana(QMainWindow):
         menuArchivo.addSeparator()
 
         menuArchivo.addAction( QIcon(absPath('arbol.ico')),"&Salir", self.cerrar, 'Ctrl+Q' )
-        
+
         actionCopiar = QAction("copiar", self)
         menuEditar = menu.addMenu("&Editar")
+        actionCopiar.setIcon(QIcon(absPath('arbol.ico')))
+        actionCopiar.setShortcut('Ctrl+C')
+        actionCopiar.triggered.connect(self.copiar)
+        actionCopiar.setStatusTip("Comando para copiar")
+
+
         menuEditar.addAction(actionCopiar)
 
         menuAyuda = menu.addMenu("A&yuda")
-
+    def copiar(self):
+        print('copiando')
     def cerrar(self):
         print('cerrando la aplicacion')
+
+
 
 
 
