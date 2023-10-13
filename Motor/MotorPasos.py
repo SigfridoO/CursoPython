@@ -113,5 +113,8 @@ def main():
     motor.run()
 
 
+    controladora = Controladora()
+    motor.establecer_controladora(controladora)
+
 if __name__ == "__main__":
     main()
