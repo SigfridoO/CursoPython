@@ -23,19 +23,18 @@ class MotorPasos:
         self.salida_03 = False
 
         self.estado = 0
-        self.TON_0 = Temporizador("TON_0", 1)
-        self.TON_1 = Temporizador("TON_1", 6)
-        self.TON_2 = Temporizador("TON_2", 2)
+        self.TON_0 = Temporizador("TON_0", 0.05)
+
 
         self.worker = None
         self.controladora: Controladora = None
         print('Dentro del motor a pasos')
 
     def run(self):
-        tarea1 = threading.Thread(target=self.iniciar_semaforo)
+        tarea1 = threading.Thread(target=self.iniciar)
         tarea1.start()
 
-    def iniciar_semaforo(self):
+    def iniciar(self):
         self.estado = 0
         cuentaMaxima = 3
         print('Iniciando control')
@@ -44,7 +43,7 @@ class MotorPasos:
             self.TON_0.actualizar()
 
             if self.TON_0.salida:
-                self.estado += 1
+                self.estado -= 1
 
                 if self.estado > cuentaMaxima:
                     self.estado = 0
@@ -84,14 +83,6 @@ class MotorPasos:
                     self.controladora.activarPin(1, self.salida_01)
                     self.controladora.activarPin(2, self.salida_02)
                     self.controladora.activarPin(3, self.salida_03)
-                #     self.entrada_00 = self.controladora.X_01
-                #
-                # if self.worker:
-                #     self.worker.senal_luz_roja(self.luzRoja)
-                #     self.worker.senal_luz_amarilla(self.luzAmarilla)
-                #     self.worker.senal_luz_verde(self.luzVerde)
-                #     self.worker.actualizar_variable_digital(self.entrada_00)
-                #     self.worker.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
 
     def establecer_worker(self, worker):
         self.worker = worker
@@ -107,14 +98,16 @@ class MotorPasos:
 
 
 def main():
-    motor = MotorPasos()
+    motorAPasos = MotorPasos()
     # print(miSemaforo)
     # miSemaforo.iniciarSemaforo()
-    motor.run()
+
 
 
     controladora = Controladora()
-    motor.establecer_controladora(controladora)
+    motorAPasos.establecer_controladora(controladora)
+
+    motorAPasos.run()
 
 if __name__ == "__main__":
     main()
