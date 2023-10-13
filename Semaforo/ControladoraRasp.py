@@ -57,6 +57,10 @@ class Controladora:
             if direccion == 2:
                 GPIO.output(self.DO_02, valor)
 
+            if direccion == 3:
+                GPIO.output(self.DO_03, valor)
+
+
     def leerPines(self):
         self.estado = True
         while self.estado:
