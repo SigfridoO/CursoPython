@@ -2,10 +2,14 @@ __author__ = "Sigfrido Soria"
 __date__ = "14-mar-2023 21:10:00"
 
 import sys
+import os
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLabel
 
-from Caja import Caja
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.sep)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
+
+from Semaforo.Caja import Caja
 
 from PyQt5.QtCore import QThread, QObject, QRunnable, QThreadPool, \
     pyqtSignal as Signal, pyqtSlot as Slot
@@ -118,6 +122,6 @@ class InterfazProyectoBase(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = InterfazPantalla()
+    window = InterfazProyectoBase()
     window.show()
     sys.exit(app.exec())
