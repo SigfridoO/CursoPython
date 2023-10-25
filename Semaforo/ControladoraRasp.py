@@ -19,7 +19,14 @@ elif sistema == 'Linux':
 class Controladora:
     def __init__(self):
         print('Iniciando la controladora')
+        self.X_00 = False
         self.X_01 = False
+
+        self.Y_00 = False
+
+        self.instruccionLeida=""
+        self.instruccionEscrita=""
+
         self.estado = False
 
         if plataforma.node == "raspberrypi":
@@ -56,6 +63,7 @@ class Controladora:
         self.DO_03 = 22
 
         self.DI_00 = 23
+        self.DI_00 = 24
 
         GPIO.setup(self.DO_00, GPIO.OUT)
         GPIO.setup(self.DO_01, GPIO.OUT)
@@ -63,11 +71,32 @@ class Controladora:
         GPIO.setup(self.DO_03, GPIO.OUT)
 
         GPIO.setup(self.DI_00, GPIO.IN)
+        GPIO.setup(self.DI_01, GPIO.IN)
+        # configurar puerto serie
 
     def loop(self):
         self.estado = True
         while self.estado:
-            self.X_01 = GPIO.input(self.DI_00)
+            
+
+            leerYEscribirPines()
+            recibirDatos()
+
+            
+
+
+    def leerYEscribirPines()
+        self.X_00 = GPIO.input(self.DI_00)
+        self.X_01 = GPIO.input(self.DI_01)
+
+        GPIO.output(self.DO_00, self.Y_00)
+        
+
+    def recibirDatos():
+        self.instruccionLeida = serial.read(50)
+
+    def transmitirDatos(instruccion):
+        serial.write(50)
 
 def main():
     controladora = Controladora()
