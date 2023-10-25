@@ -10,6 +10,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
 
 #from Semaforo.ControladoraRasp import Controladora
 from Controladora.Temporizador import Temporizador
+from enum import Enum
+
 
 class ProyectoBase:
 
@@ -25,8 +27,12 @@ class ProyectoBase:
         self.lamparaEnOperacion = False
         self.lamparaAlarma = False
 
-        self.estado = 0
-        self.TON_0 = Temporizador("TON_0", 4)
+        #self.motor1 = MotorPasos()
+        #self.motor2 = MotorConPuenteH()
+
+
+        self.estado = SecuenciaDeOperacion.inicializacion
+        self.TON_0 = Temporizador("TON_0", 1)
         self.TON_1 = Temporizador("TON_1", 6)
         self.TON_2 = Temporizador("TON_2", 2)
 
@@ -34,19 +40,17 @@ class ProyectoBase:
         self.controladora: Controladora = None
 
     def run(self):
-        tarea1 = threading.Thread(target=self.iniciar_semaforo)
+        tarea1 = threading.Thread(target=self.iniciar)
         tarea1.start()
 
-    def iniciar_semaforo(self):
+    def iniciar(self):
         while True:
             self.TON_0.entrada = not self.TON_0.salida
             self.TON_0.actualizar()
 
+            if self.TON_0.salida:
 
-
-
-  
-            print(self)
+                print(self)
 
             # if self.controladora:
             #     self.controladora.activarPin(0, self.luzRoja)
@@ -71,6 +75,9 @@ class ProyectoBase:
         return "Arranque: " + str(self.botonArranque) + \
             ", Paro: " + str(self.botonPAro) 
 
+class SecuenciaDeOperacion(Enum):
+    inicializacion = 0
+    calibracion =1
 
 def main():
     miProyecto = ProyectoBase()
