@@ -20,17 +20,17 @@ sys.path.append(os.path.join(ruta, ".."))
 
 from ProyectoBase import ProyectoBase
 from InterfazProyectoBase import InterfazProyectoBase
-from ControladoraRasp import Controladora
+#from ControladoraRasp import Controladora
 
 
 class Inicio(InterfazProyectoBase):
     def __init__(self):
         InterfazProyectoBase.__init__(self)
 
-        semaforo = Semaforo()
-        semaforo.run()
-        
-        #semaforo.establecer_worker(self.obtener_worker())
+        miProyecto = ProyectoBase()
+        miProyecto.run()
+            
+        miProyecto.establecer_worker(self.obtener_worker())
 
         #controladora = Controladora()
         #semaforo.establecer_controladora(controladora)

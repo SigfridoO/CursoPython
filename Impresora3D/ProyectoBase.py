@@ -15,7 +15,7 @@ class ProyectoBase:
 
     def __init__(self):
 
-        self.entrada_00 = None
+        self.entrada_00 = False
         self.luzRoja = False
         self.luzVerde = False
         self.luzAmarilla = False
