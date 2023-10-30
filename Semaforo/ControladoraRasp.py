@@ -79,21 +79,25 @@ class Controladora:
         while self.estado:
             
 
-            leerYEscribirPines()
+            #leerYEscribirPines()
             recibirDatos()
 
             
 
 
-    def leerYEscribirPines()
+    def leerYEscribirPines():
         self.X_00 = GPIO.input(self.DI_00)
         self.X_01 = GPIO.input(self.DI_01)
 
         GPIO.output(self.DO_00, self.Y_00)
-        
+
+        GPIO.output(self.DO_01, self.Y_01)
+
+        GPIO.output(self.DO_02, self.Y_01)
 
     def recibirDatos():
-        self.instruccionLeida = serial.read(50)
+        # self.instruccionLeida = serial.read(50)
+        pass
 
     def transmitirDatos(instruccion):
         serial.write(50)
