@@ -17,6 +17,7 @@ class MotorPasos:
     def __init__(self):
 
         self.entrada_00 = None
+        
         self.salida_00 = False
         self.salida_01 = False
         self.salida_02 = False
