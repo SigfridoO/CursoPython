@@ -1,4 +1,5 @@
 import sys
+import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 
 
@@ -28,6 +29,7 @@ class Ventana(QMainWindow):
 
     def botonPresionado(self):
         print('Boton presionado')
+        os.system('"C:\Program Files\Arduino IDE\Arduino IDE.exe"')
 
     def botonLiberado(self):
         print('boton liberado')
