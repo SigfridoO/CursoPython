@@ -8,7 +8,7 @@ import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.sep)
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
 
-#from Semaforo.ControladoraRasp import Controladora
+from Semaforo.ControladoraRasp import Controladora
 from Controladora.Temporizador import Temporizador
 from enum import Enum
 

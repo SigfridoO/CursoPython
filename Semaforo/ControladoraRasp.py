@@ -137,31 +137,31 @@ class Controladora:
         GPIO.setup(self.DI_02, GPIO.OUT)
         GPIO.setup(self.DI_03, GPIO.OUT)
         
-        GPIO.setup(self.DO_00, GPIO.OUT)
-        GPIO.setup(self.DO_01, GPIO.OUT)
-        GPIO.setup(self.DO_02, GPIO.OUT)
-        GPIO.setup(self.DO_03, GPIO.OUT)
+        GPIO.setup(self.DI_04, GPIO.OUT)
+        GPIO.setup(self.DI_05, GPIO.OUT)
+        GPIO.setup(self.DI_06, GPIO.OUT)
+        GPIO.setup(self.DI_07, GPIO.OUT)
 
         GPIO.setup(self.DO_00, GPIO.OUT)
         GPIO.setup(self.DO_01, GPIO.OUT)
         GPIO.setup(self.DO_02, GPIO.OUT)
         GPIO.setup(self.DO_03, GPIO.OUT)
 
-        GPIO.setup(self.DO_00, GPIO.OUT)
-        GPIO.setup(self.DO_01, GPIO.OUT)
-        GPIO.setup(self.DO_02, GPIO.OUT)
-        GPIO.setup(self.DO_03, GPIO.OUT)
+        GPIO.setup(self.DO_04, GPIO.OUT)
+        GPIO.setup(self.DO_05, GPIO.OUT)
+        GPIO.setup(self.DO_06, GPIO.OUT)
+        GPIO.setup(self.DO_07, GPIO.OUT)
 
-        GPIO.setup(self.DO_00, GPIO.OUT)
-        GPIO.setup(self.DO_01, GPIO.OUT)
-        GPIO.setup(self.DO_02, GPIO.OUT)
-        GPIO.setup(self.DO_03, GPIO.OUT)
+        GPIO.setup(self.DO_08, GPIO.OUT)
+        GPIO.setup(self.DO_09, GPIO.OUT)
+        GPIO.setup(self.DO_10, GPIO.OUT)
+        GPIO.setup(self.DO_11, GPIO.OUT)
 
 
-        GPIO.setup(self.DI_00, GPIO.IN)
-        GPIO.setup(self.DI_01, GPIO.IN)
-        GPIO.setup(self.DI_00, GPIO.IN)
-        GPIO.setup(self.DI_01, GPIO.IN)
+        GPIO.setup(self.DI_12, GPIO.IN)
+        GPIO.setup(self.DI_13, GPIO.IN)
+        GPIO.setup(self.DI_14, GPIO.IN)
+        # GPIO.setup(self.DI_15, GPIO.IN)
 
 
         # configurar puerto serie
@@ -171,13 +171,13 @@ class Controladora:
         while self.estado:
             
 
-            leerYEscribirPines()
+            self.leerYEscribirPines()
             #recibirDatos()
 
             
 
 
-    def leerYEscribirPines():
+    def leerYEscribirPines(self):
         # Lo que tenga en los pines de entrada me lo manda a las X
         self.X_00 = GPIO.input(self.DI_00)
         self.X_01 = GPIO.input(self.DI_01)
