@@ -18,8 +18,14 @@ elif sistema == 'Linux':
 
 class Controladora:
     def __init__(self):
+        self.DI_03 = None
+        self.DI_02 = None
         print('Iniciando la controladora')
-        
+
+
+
+
+
         # Entradas Digitales
         self.X_00 = False
         self.X_01 = False
@@ -65,8 +71,7 @@ class Controladora:
 
             tarea1 = threading.Thread(target=self.loop)
             tarea1.start()
-            # while True:
-            #     GPIO.output(self.DO_00, GPIO.input(self.DI_00))
+
 
     def activarPin(self, direccion, valor):
         if plataforma.node == "raspberrypi":
@@ -96,8 +101,8 @@ class Controladora:
 
         self.DI_00 = 18
         self.DI_01 = 23
-        self.D2_02 = 24
-        self.D3_03 = 25
+        self.DI_02 = 24
+        self.DI_03 = 25
 
         #Sensores
 
@@ -115,12 +120,12 @@ class Controladora:
         self.DO_03 = 22
 
         # Motor de Corriente directa
-        self.DI_05 = 10
-        self.DI_06 = 9
+        self.DO_05 = 10
+        self.DO_06 = 9
 
         # Motor de CD con PWM
-        self.DI_07 = 11
-        self.DI_08 = 5
+        self.DO_07 = 11
+        self.DO_08 = 5
 
         # Motor a pasos
         self.DO_09 = 6
@@ -132,16 +137,18 @@ class Controladora:
         self.DO_13 = 20
         self.DO_14 = 21
 
-        GPIO.setup(self.DI_00, GPIO.OUT)
-        GPIO.setup(self.DI_01, GPIO.OUT)
-        GPIO.setup(self.DI_02, GPIO.OUT)
-        GPIO.setup(self.DI_03, GPIO.OUT)
+        # Entradas
+        GPIO.setup(self.DI_00, GPIO.IN)
+        GPIO.setup(self.DI_01, GPIO.IN)
+        GPIO.setup(self.DI_02, GPIO.IN)
+        GPIO.setup(self.DI_03, GPIO.IN)
         
-        GPIO.setup(self.DI_04, GPIO.OUT)
-        GPIO.setup(self.DI_05, GPIO.OUT)
-        GPIO.setup(self.DI_06, GPIO.OUT)
-        GPIO.setup(self.DI_07, GPIO.OUT)
+        GPIO.setup(self.DI_04, GPIO.IN)
+        GPIO.setup(self.DI_05, GPIO.IN)
+        GPIO.setup(self.DI_06, GPIO.IN)
+        GPIO.setup(self.DI_07, GPIO.IN)
 
+        # Salidas
         GPIO.setup(self.DO_00, GPIO.OUT)
         GPIO.setup(self.DO_01, GPIO.OUT)
         GPIO.setup(self.DO_02, GPIO.OUT)
@@ -178,19 +185,46 @@ class Controladora:
 
 
     def leerYEscribirPines(self):
-        # Lo que tenga en los pines de entrada me lo manda a las X
+        # Entradas digitales
         self.X_00 = GPIO.input(self.DI_00)
         self.X_01 = GPIO.input(self.DI_01)
+        self.X_02 = GPIO.input(self.DI_02)
+        self.X_03 = GPIO.input(self.DI_03)
+        self.X_04 = GPIO.input(self.DI_04)
+        self.X_05 = GPIO.input(self.DI_05)
+        self.X_06 = GPIO.input(self.DI_06)
+        self.X_07 = GPIO.input(self.DI_07)
 
-        # Lo que tenga en las Y me lo manda a los pines
-
+        # Salidas digitales
         GPIO.output(self.DO_00, self.Y_00)
-
         GPIO.output(self.DO_01, self.Y_01)
+        GPIO.output(self.DO_02, self.Y_02)
+        GPIO.output(self.DO_03, self.Y_03)
+        GPIO.output(self.DO_04, self.Y_04)
+        GPIO.output(self.DO_05, self.Y_05)
+        GPIO.output(self.DO_06, self.Y_06)
+        GPIO.output(self.DO_07, self.Y_07)
 
-        GPIO.output(self.DO_02, self.Y_01)
+        GPIO.output(self.DO_08, self.Y_08)
+        GPIO.output(self.DO_09, self.Y_09)
+        GPIO.output(self.DO_10, self.Y_10)
+        GPIO.output(self.DO_11, self.Y_11)
+        GPIO.output(self.DO_12, self.Y_12)
+        GPIO.output(self.DO_13, self.Y_13)
+        GPIO.output(self.DO_14, self.Y_14)
+        GPIO.output(self.DO_15, self.Y_15)
 
-    def recibirDatos():
+        GPIO.output(self.DO_16, self.Y_16)
+        GPIO.output(self.DO_17, self.Y_17)
+        GPIO.output(self.DO_18, self.Y_18)
+        GPIO.output(self.DO_19, self.Y_19)
+        GPIO.output(self.DO_20, self.Y_20)
+        GPIO.output(self.DO_21, self.Y_21)
+        GPIO.output(self.DO_22, self.Y_22)
+        GPIO.output(self.DO_23, self.Y_23)
+
+
+    def recibirDatos(self):
         # self.instruccionLeida = serial.read(50)
         pass
 
