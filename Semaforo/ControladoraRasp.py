@@ -20,7 +20,6 @@ elif sistema == 'Linux':
 class Controladora:
     def __init__(self):
 
-
         print('Iniciando la controladora')
 
         self.DI_01 = None
@@ -87,23 +86,23 @@ class Controladora:
         if plataforma.node == "raspberrypi":
             self.configurarSenales()
 
-            tarea1 = threading.Thread(target=self.loop)
+            tarea1 = threading.Thread(target=self.run)
             tarea1.start()
 
     def activarPin(self, direccion, valor):
         if plataforma.node == "raspberrypi":
 
             if direccion == 0:
-                GPOI.output(self.DO_00, valor)
+                self.X_00 = valor
 
             if direccion == 1:
-                GPIO.output(self.DO_01, valor)
+                self.X_01 = valor
 
             if direccion == 2:
-                GPIO.output(self.DO_02, valor)
+                self.X_02 = valor
 
             if direccion == 3:
-                GPIO.output(self.DO_03, valor)
+                self.X_03 = valor
 
     def configurarSenales(self):
         GPIO.setmode(GPIO.BCM)
@@ -183,7 +182,7 @@ class Controladora:
 
         # configurar puerto serie
 
-    def loop(self):
+    def run(self):
         self.estado = True
         while self.estado:
             self.leerYEscribirPines()

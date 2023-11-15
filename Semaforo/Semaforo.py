@@ -1,6 +1,8 @@
 __author__ = "Sigfrido Soria"
 __date__ = "14-mar-2023 21:10:00"
 
+import time
+
 from Controladora.Temporizador import Temporizador
 import threading
 import sys
@@ -78,14 +80,16 @@ class Semaforo:
                 self.controladora.activarPin(0, self.luzRoja)
                 self.controladora.activarPin(1, self.luzAmarilla)
                 self.controladora.activarPin(2, self.luzVerde)
-                #self.entrada_00 = self.controladora.X_01
+                self.entrada_00 = self.controladora.X_01
 
             if self.worker:
                 self.worker.senal_luz_roja(self.luzRoja)
                 self.worker.senal_luz_amarilla(self.luzAmarilla)
                 self.worker.senal_luz_verde(self.luzVerde)
-                #self.worker.actualizar_variable_digital(self.entrada_00)
-                #self.worker.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
+                self.worker.actualizar_variable_digital(self.entrada_00)
+                self.worker.actualizar_variable_analogica(str(self.TON_0.tiempoActual))
+
+            time.sleep(0.001)
 
     def establecer_worker(self, worker):
         self.worker = worker
