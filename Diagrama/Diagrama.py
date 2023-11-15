@@ -2,6 +2,7 @@ import threading
 
 from Controladora.Temporizador import Temporizador
 
+
 class Secuencia:
 
     def __init__(self):
@@ -45,9 +46,7 @@ class Secuencia:
                     if self.entrada_00:
                         self.estado = 0
 
-
                 print(self)
-
 
     def __str__(self):
         return "Variables: " + str(1 if self.entrada_00 else 0) + \
@@ -59,6 +58,6 @@ def main():
     secuencia = Secuencia()
     secuencia.run()
 
+
 if __name__ == "__main__":
     main()
-

@@ -20,6 +20,7 @@ elif sistema == 'Linux':
 class Controladora:
     def __init__(self):
 
+
         print('Iniciando la controladora')
 
         self.DI_01 = None
@@ -93,7 +94,7 @@ class Controladora:
         if plataforma.node == "raspberrypi":
 
             if direccion == 0:
-                GPIO.output(self.DO_00, valor)
+                GPOI.output(self.DO_00, valor)
 
             if direccion == 1:
                 GPIO.output(self.DO_01, valor)
