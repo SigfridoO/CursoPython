@@ -95,16 +95,16 @@ class Controladora:
         if plataforma.node == "raspberrypi":
 
             if direccion == 0:
-                self.X_00 = valor
+                self.Y_00 = valor
 
             if direccion == 1:
-                self.X_01 = valor
+                self.Y_01 = valor
 
             if direccion == 2:
-                self.X_02 = valor
+                self.Y_02 = valor
 
             if direccion == 3:
-                self.X_03 = valor
+                self.Y_03 = valor
 
     def configurarSenales(self):
         GPIO.setmode(GPIO.BCM)

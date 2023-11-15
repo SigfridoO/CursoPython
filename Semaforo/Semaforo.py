@@ -80,7 +80,7 @@ class Semaforo:
                 self.controladora.activarPin(0, self.luzRoja)
                 self.controladora.activarPin(1, self.luzAmarilla)
                 self.controladora.activarPin(2, self.luzVerde)
-                self.entrada_00 = self.controladora.X_01
+                self.entrada_00 = self.controladora.X_00
 
             if self.worker:
                 self.worker.senal_luz_roja(self.luzRoja)
