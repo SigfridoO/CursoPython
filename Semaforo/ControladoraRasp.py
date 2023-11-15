@@ -22,8 +22,8 @@ class Controladora:
 
         print('Iniciando la controladora')
 
-        self.DI_01 = None
         self.DI_00 = None
+        self.DI_01 = None
         self.DI_02 = None
         self.DI_03 = None
         self.DI_04 = None
@@ -38,14 +38,16 @@ class Controladora:
         self.DO_04 = None
         self.DO_05 = None
         self.DO_06 = None
-        self.DO_08 = None
         self.DO_07 = None
+
+        self.DO_08 = None
         self.DO_09 = None
         self.DO_10 = None
         self.DO_11 = None
         self.DO_12 = None
         self.DO_13 = None
         self.DO_14 = None
+        self.DO_15 = None
 
         # Entradas Digitales
         self.X_00 = False
@@ -120,8 +122,8 @@ class Controladora:
 
         self.DI_04 = 8
         self.DI_05 = 7
-        self.DI_06 = 12
-        self.DI_07 = 16
+        self.DI_06 = 1
+        self.DI_07 = 12
 
         # --------------  Salidas
         # Lamparas
@@ -129,13 +131,14 @@ class Controladora:
         self.DO_01 = 17
         self.DO_02 = 27
         self.DO_03 = 22
+        self.DO_04 = 10
 
         # Motor de Corriente directa
-        self.DO_05 = 10
-        self.DO_06 = 9
+        self.DO_05 = 9
+        self.DO_06 = 11
 
         # Motor de CD con PWM
-        self.DO_07 = 11
+        self.DO_07 = 0
         self.DO_08 = 5
 
         # Motor a pasos
@@ -145,8 +148,9 @@ class Controladora:
         self.DO_12 = 26
 
         # Motor Trifasico
-        self.DO_13 = 20
-        self.DO_14 = 21
+        self.DO_13 = 16
+        self.DO_14 = 20
+        self.DO_15 = 21
 
         # Entradas
         GPIO.setup(self.DI_00, GPIO.IN)
@@ -178,7 +182,7 @@ class Controladora:
         GPIO.setup(self.DO_12, GPIO.OUT)
         GPIO.setup(self.DO_13, GPIO.OUT)
         GPIO.setup(self.DO_14, GPIO.OUT)
-        # GPIO.setup(self.DO_15, GPIO.IN)
+        GPIO.setup(self.DO_15, GPIO.IN)
 
         # configurar puerto serie
 
