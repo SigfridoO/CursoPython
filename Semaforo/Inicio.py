@@ -27,7 +27,7 @@ class Inicio(InterfazPantalla):
     def __init__(self):
         InterfazPantalla.__init__(self)
 
-        semaforo = Semaforo()
+        semaforo: Semaforo = Semaforo()
         semaforo.run()
         semaforo.establecer_worker(self.obtener_worker())
 
