@@ -14,7 +14,13 @@ from Semaforo.ControladoraRasp import Controladora
 
 class MotorPasos:
 
-    def __init__(self):
+    def __init__(self, A:int, B:int, C:int, D:int):
+
+        self.pinBobina_A = A
+        self.pinBobina_B = B
+        self.pinBobina_C = C
+        self.pinBobina_D = D
+
 
         self.entrada_00 = None
         
@@ -99,7 +105,7 @@ class MotorPasos:
 
 
 def main():
-    motorAPasos = MotorPasos()
+    motorAPasos = MotorPasos(0, 1, 2, 3)
     # print(miSemaforo)
     # miSemaforo.iniciarSemaforo()
 

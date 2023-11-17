@@ -9,6 +9,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep + ".." + os.
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.sep)
 
 from Semaforo.ControladoraRasp import Controladora
+from Motor.MotorPasos import MotorPasos
+from Motor.MotorCD import MotorCD
 from Controladora.Temporizador import Temporizador
 from enum import Enum
 
@@ -27,8 +29,17 @@ class ProyectoBase:
         self.lamparaEnOperacion = False
         self.lamparaAlarma = False
 
-        #self.motor1 = MotorPasos()
+
         #self.motor2 = MotorConPuenteH()
+
+        self.worker = None
+        self.controladora: Controladora = None
+
+        self.motor1 = MotorPasos(0, 1, 2, 3)
+        self.motor1.establecer_controladora(self.controladora)
+        self.motor1.run()
+
+        self.motor2 = MotorCD()
 
 
         self.estado = SecuenciaDeOperacion.inicializacion
@@ -36,8 +47,7 @@ class ProyectoBase:
         self.TON_1 = Temporizador("TON_1", 6)
         self.TON_2 = Temporizador("TON_2", 2)
 
-        self.worker = None
-        self.controladora: Controladora = None
+
 
     def run(self):
         tarea1 = threading.Thread(target=self.iniciar)
